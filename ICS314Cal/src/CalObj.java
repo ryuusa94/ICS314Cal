@@ -8,8 +8,12 @@
  * @author 
  *
  */
-public class CalObj {
+public class CalObj 
+{
 	
-
+	public static void main(String[] args)
+	{
+		System.out.println("Some words.");
+	}
 
 }
