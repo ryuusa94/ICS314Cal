@@ -19,13 +19,16 @@ public class Driver {
 		event1.setName("Fireworks");
 		event1.setStartTime("20150704T210000");
 		event1.setEndTime("20150704T220000");
+		event1.setDate("20150704");
 		event1.setTimezone("Pacific/Honolulu");
 		event1.setSummary("Watching fireworks at Ala Moana.");
+		event1.setLat((float) 21.285247);
+		event1.setLon((float) -157.845855);
 		
 		try
 		{
 			//creating file
-			File writeF = new File("testCal.ics");
+			File writeF = new File("testCalGOOGLE.ics");
 			
 			if (!writeF.exists())
 			{

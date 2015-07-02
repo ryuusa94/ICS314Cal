@@ -12,6 +12,8 @@ public class CalObj
   	private String timezone; //will be Pacific/Honolulu here
 	private String date; //may need to mix date and time, exp: 201500701T010000
 	private String[] location;
+	private Float lat;//used for geographic position
+	private Float lon;//used for geographic position
 	private String coordinates;
   	private String summary; //used in toString below
   	  	
@@ -72,6 +74,22 @@ public class CalObj
 	{
 		return coordinates;
 	}
+	public Float getLat() {
+		return lat;
+	}
+
+	public void setLat(Float lat) {
+		this.lat = lat;
+	}
+
+	public Float getLon() {
+		return lon;
+	}
+
+	public void setLon(Float lon) {
+		this.lon = lon;
+	}
+
 	public void setCoordinates(String coordinates) 
 	{
 		this.coordinates = coordinates;
@@ -90,7 +108,7 @@ public class CalObj
 	 * several of the lines appended below with need to be changed from
 	 * hard coding to variables 
 	 */
-	public String toString()
+/*	public String toString()
 	{
 		return new StringBuffer("BEGIN:VCALENDAR\n")
 			.append("CALSCALE:GREGORIAN\n")
@@ -109,10 +127,38 @@ public class CalObj
 			.append("DTSTART;TZID="+ this.timezone +":" + this.startTime + "\n") //need to mix date with time?
 			.append("DTSTAMP:20150701T090000Z\n")
 			.append("LOCATION:" + this.location + "\n")
+			.append("GEO:" + this.lat + ";" + this.lon + "\n")//geographic position
 			.append("SEQUENCE:0\n")
 			//.append("SEQUENCE:" + Driver.sequence + "\n")//don't know if sequence needs to increase
 			.append("END:VEVENT\n")
-			.append("ENDVCALENDAR\n").toString();
+			.append("END:VCALENDAR\n").toString();
+	}
+*/
+	
+	/* toString method
+	 * WORKS WITH GOOGLE CALENDAR (also works with Mac, but not as well as Mac version)
+	 * Commented lines are still untested, and are likely unneeded.
+	 */
+	public String toString()
+	{
+		return new StringBuffer("BEGIN:VCALENDAR\n")			
+			//.append("X-WR-TIMEZONE:"+ this.timezone +"\n")
+			.append("BEGIN:VEVENT\n")
+			.append("DTSTART;VALUE=DATE:" + this.date + "\n")
+			.append("DTEND;VALUE=DATE:20150705\n") //need end date variable
+			//.append("DTSTAMP:20150701T090000Z\n")
+			//.append("UID:0pcbu9mp1eqeak59v0m04lspn0@google.com\n") //don't know how to use this
+			//.append("CREATED:20150701T052850Z\n")
+			.append("DESCRIPTION:" + this.summary + "\n")
+			//.append("LAST-MODIFIED:20150701T052850Z\n")
+			.append("LOCATION:" + this.location + "\n")
+			.append("GEO:" + this.lat + ";" + this.lon + "\n")//geographic position
+			//.append("SEQUENCE:0\n")
+			//.append("STATUS:CONFIRMED\n")
+			.append("SUMMARY:" + this.name + "\n")
+			//.append("TRANSP:TRANSPARENT\n")			
+			.append("END:VEVENT\n")
+			.append("END:VCALENDAR\n").toString();
 	}
 
 	
