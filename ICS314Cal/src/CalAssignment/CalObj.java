@@ -1,3 +1,4 @@
+package CalAssignment;
 /**
  * CalObj class
  * private variables, empty constructor, public setters and getters,
@@ -104,7 +105,7 @@ public class CalObj
 			.append("DTEND;TZID="+ this.timezone +":"+ this.endTime +"\n") //need to mix date with time?
 			.append("TRANSP:OPAQUE\n")
 			.append("CREATED:20150701T052850Z\n")
-			.append("SUMMARY:" + this.name + "\n")
+			.append("SUMMARY:" + this.summary + "\n")
 			.append("DTSTART;TZID="+ this.timezone +":" + this.startTime + "\n") //need to mix date with time?
 			.append("DTSTAMP:20150701T090000Z\n")
 			.append("LOCATION:" + this.location + "\n")
