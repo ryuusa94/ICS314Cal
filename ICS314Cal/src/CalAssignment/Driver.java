@@ -21,7 +21,7 @@ public class Driver {
 		event1.setEndTime("20150704T220000");
 		event1.setDate("20150704");
 		event1.setTimezone("Pacific/Honolulu");
-		event1.setSummary("Watching fireworks at Ala Moana.");
+		event1.setDescript("Watching fireworks at Ala Moana.");
 		event1.setLat((float) 21.285247);
 		event1.setLon((float) -157.845855);
 		
