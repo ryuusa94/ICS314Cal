@@ -54,6 +54,8 @@ public class CalObj {
 				bw.write( e.getEventStartTime() );
 				bw.write( e.getEventEndTime() );
 				bw.write( e.getEventSummary() );
+				//GEO
+				bw.write( e.getEventGeoPos() );
 	            bw.write(eventEnd);
 	        }
 			bw.write(calEnd);

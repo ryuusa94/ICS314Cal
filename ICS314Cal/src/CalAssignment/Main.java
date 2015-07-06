@@ -9,6 +9,8 @@ public class Main {
 		ev.setStart("20150714T170000Z");
 		ev.setEnd("20150715T035959Z");
 		ev.setUID("elara@example.edu");
+		//GEO
+		ev.setGeographicPosition((float)21.297688, (float)-157.815916);
 		cal.addEvent(ev);
 		cal.write("new");
 
