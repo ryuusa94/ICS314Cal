@@ -1,45 +1,32 @@
-package CalAssignment;
-
+/**
+ * Event
+ * class Event
+ * @author TeamElara
+ *
+ */
 public class Event {
-	private String eventSummary;
-	private String eventStartTime;
-	private String eventEndTime;
-	private String eventUid;
-	private String eventTimezone;
-	private String eventGeoPos;
-	private String eventClass;
-
+	private String eventSummary, 
+		eventStartTime, 
+		eventEndTime, 
+		eventUid, 
+		eventTimezone, 
+		eventGeoPos, 
+		eventClass;
 	
-	public Event(){
-		eventSummary = "";
-		eventStartTime = "";
-		eventEndTime = "";
-		eventUid = "";
-		eventTimezone = "";
-		eventGeoPos = "";
-		eventClass = "";
-		
-	}
-	
-
-	
-	public void setSummary( String summary){
+	public void setSummary(String summary){
 		StringBuilder builder = new StringBuilder();
 		builder.append("SUMMARY:");
 		builder.append(summary);
 		builder.append("\r\n");
 		eventSummary = builder.toString();
-		
-		
 	}
 	
-	public void setStart( String time){
+	public void setStart(String time){
 		StringBuilder builder = new StringBuilder();
 		builder.append("DTSTART:");
 		builder.append(time);
 		builder.append("\r\n");
 		eventStartTime = builder.toString();
-		
 	}
 	
 	public void setEnd(String time){
@@ -48,16 +35,14 @@ public class Event {
 		builder.append(time);
 		builder.append("\r\n");
 		eventEndTime = builder.toString();
-		
 	}
 	
-	public void setUID( String uid){
+	public void setUID(String uid){
 		StringBuilder builder = new StringBuilder();
 		builder.append("UID:");
 		builder.append(uid);
 		builder.append("\r\n");
 		eventUid = builder.toString();
-		
 	}
 	
 	public void setTimeZone(String tz){
@@ -117,6 +102,4 @@ public class Event {
 	public String getEventClass() {
 		return eventClass;
 	}
-
 }
-
