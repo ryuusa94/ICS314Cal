@@ -51,9 +51,12 @@ public class CalObj {
 				bw.write( e.getEventStartTime() );
 				bw.write( e.getEventEndTime() );
 				bw.write( e.getEventSummary() );				
-				//GEO, crashes when no parameters sent to setGeographicPosition
-				bw.write( e.getEventGeoPos() );
-				bw.write( e.getEventClass() );
+				if(Interface.getGeoInfo()) {
+					bw.write( e.getEventGeoPos() );
+				}
+				if(Interface.getClassInfo()) {
+					bw.write( e.getEventClass() );
+				}				
 	            bw.write(eventEnd);
 	        }
 			bw.write(calEnd);
