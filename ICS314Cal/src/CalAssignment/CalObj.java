@@ -1,3 +1,5 @@
+package CalAssignment;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -48,10 +50,10 @@ public class CalObj {
 				bw.write( e.getEventUid() );
 				bw.write( e.getEventStartTime() );
 				bw.write( e.getEventEndTime() );
-				bw.write( e.getEventSummary() );
-				
-				//GEO
-//				bw.write( e.getEventGeoPos() ); // since we don't have this method in Event.java yet, main method crashes if this is on
+				bw.write( e.getEventSummary() );				
+				//GEO, crashes when no parameters sent to setGeographicPosition
+				bw.write( e.getEventGeoPos() );
+				bw.write( e.getEventClass() );
 	            bw.write(eventEnd);
 	        }
 			bw.write(calEnd);

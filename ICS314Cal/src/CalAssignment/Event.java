@@ -1,3 +1,5 @@
+package CalAssignment;
+
 /**
  * Event
  * class Event
@@ -60,7 +62,11 @@ public class Event {
 	}
 
 	public void setClassification(String cla ){
-		
+		StringBuilder builder = new StringBuilder();
+		builder.append("CLASS:");
+		builder.append(cla);
+		builder.append("\r\n");
+		eventClass = builder.toString();
 	}
 	
 	public String getEventSummary() {
