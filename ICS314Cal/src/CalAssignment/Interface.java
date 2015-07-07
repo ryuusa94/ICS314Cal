@@ -67,7 +67,7 @@ public class Interface {
 			event.setGeographicPosition(Float.parseFloat(descriptors[i++]), 
 					Float.parseFloat(descriptors[i++]));
 		}
-		if(classInfo) {
+		if(getClassInfo()) {
 			event.setClassification(descriptors[i++].toUpperCase());
 		}		
 		return event;
