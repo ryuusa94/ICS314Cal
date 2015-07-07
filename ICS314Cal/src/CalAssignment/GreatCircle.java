@@ -21,6 +21,7 @@ public class GreatCircle {
 		
 		System.out.println("Straight line distance from campus to Kapiolani park (in miles): " + 
 				circleDistance(21.298307, -157.816023, 21.267356, -157.819414));
+		
 	}
 
 	
