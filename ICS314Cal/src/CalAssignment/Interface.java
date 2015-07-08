@@ -41,7 +41,7 @@ public class Interface {
 			setClassInfo(true);
 		}
 		
-		//Optional user input (Time Zone), converted to Upper Case
+		//Optional user input (Time Zone)
 		System.out.println("Would you like to set a time zome (Y/N)?");
 		if(input.nextLine().equalsIgnoreCase("y")) {
 			String[] tzList = tzPrompts();
