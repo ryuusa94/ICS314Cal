@@ -7,6 +7,7 @@ public class Interface {
 		both within this classes' createEvent method, and CalObj's write method, */ 
 	private static boolean geoInfo;
 	private static boolean classInfo;
+	private static boolean tzInfo;
 	
 	public static void main(String[] args) {
 		Event event = new Event();
@@ -40,6 +41,36 @@ public class Interface {
 			setClassInfo(true);
 		}
 		
+		//Optional user input (Time Zone)
+		System.out.println("Would you like to set a time zome (Y/N)?");
+		if(input.nextLine().equalsIgnoreCase("y")) {
+			String[] tzList = tzPrompts();
+			for(int i = 0; i < tzList.length; i++) {
+				String tz = tzList[i];
+				System.out.println((i+1) + ". " + tz);
+			}
+			System.out.println("Please enter the number of the time zone.");
+			
+			String choice = input.nextLine();			
+			switch (choice) { 
+				case "1": builder.append("America/New_York");
+					break;
+				case "2": builder.append("America/Chicago");
+					break;
+				case "3": builder.append("America/Denver");
+					break;
+				case "4": builder.append("America/Los_Angles");
+					break;
+				case "5": builder.append("America/Anchorage");
+					break;
+				case "6": builder.append("Pacific/Honolulu");
+					break;
+				default: System.out.println("There has been an error.");
+					break;
+			}									
+			setTzInfo(true);
+		}
+		
 		input.close();
 		
 		event = createEvent(event, builder.toString());
@@ -47,21 +78,37 @@ public class Interface {
 		calendar.write("calendar");
 	}
 	
+
+
 	public static String[] getPrompts() {
 		return new String[] {
 			"Name the event",
-			"Set a start time",
-			"Set an end time",
+			"Set a start date (yyyymmdd)",
+			"Set a start time (hhmm)",
+			"Set an end date (yyyymmdd)",
+			"Set an end time (hhmm)",
 			"Enter your email address"
 		};		
+	}
+	
+	public static String[] tzPrompts() {
+		return new String[] {
+				"Eastern",
+				"Central",
+				"Mountain",
+				"Pacific",
+				"Alaska",
+				"Hawaii"
+		};
 	}
 	
 	public static Event createEvent(Event event, String info) {
 		String[] descriptors = info.split(", ");
 		int i = 0;
 		event.setSummary(descriptors[i++]);
-		event.setStart(descriptors[i++]);
-		event.setEnd(descriptors[i++]);
+		//only works if timezone info is last in array.
+		event.setStart(descriptors[i++], descriptors[i++], descriptors[descriptors.length-1]);
+		event.setEnd(descriptors[i++], descriptors[i++], descriptors[descriptors.length-1]);
 		event.setUID(descriptors[i++]);
 		if(getGeoInfo()) {
 			event.setGeographicPosition(Float.parseFloat(descriptors[i++]), 
@@ -69,6 +116,9 @@ public class Interface {
 		}
 		if(getClassInfo()) {
 			event.setClassification(descriptors[i++].toUpperCase());
+		}
+		if(getTzInfo()) {
+			event.setTimeZone(descriptors[i++]);
 		}		
 		return event;
 	}
@@ -91,6 +141,14 @@ public class Interface {
 	
 	public static boolean getClassInfo() {
 		return classInfo;
+	}
+	
+	public static boolean getTzInfo() {
+		return tzInfo;
+	}
+
+	public static void setTzInfo(boolean b) {
+		tzInfo = b;
 	}
 	
 }
