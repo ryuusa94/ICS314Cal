@@ -1,3 +1,5 @@
+package CalAssignment;
+
 /**
  * Event
  * class Event
@@ -7,7 +9,7 @@
 public class Event {
 	private String eventSummary, 
 		eventStartTime, 
-		eventEndTime, 
+		eventEndTime,
 		eventUid, 
 		eventTimezone, // we either need to put this in automatically, or ask user to put in (optional or mandatory)
 		// if asking, see RFC 5545 page 27 section 3.2.19 Time Zone Identifier at https://tools.ietf.org/html/rfc5545#section-3.2.19
@@ -26,20 +28,54 @@ public class Event {
 		.toString();
 	}
 	
-	public void setStart(String time){
-		eventStartTime = new StringBuilder()
-			.append("DTSTART:")
+	public void setStart(String date, String time, String tz){
+		if(Interface.getTzInfo()) {
+			eventStartTime = new StringBuilder()
+			.append("DTSTART;")
+			.append("TZID=")
+			.append(tz)
+			.append(":")
+			.append(date)
+			.append("T")
 			.append(time)
+			.append("00")
 			.append("\r\n")
 		.toString();
+		} else { 
+			eventStartTime = new StringBuilder()
+			.append("DTSTART:")
+			.append(date)
+			.append("T")
+			.append(time)
+			.append("00")
+			.append("\r\n")
+		.toString();
+		}		
 	}
 	
-	public void setEnd(String time){
-		eventEndTime = new StringBuilder()
-			.append("DTEND:")
+	public void setEnd(String date, String time, String tz){
+		if(Interface.getTzInfo()) {
+			eventStartTime = new StringBuilder()
+			.append("DTEND;")
+			.append("TZID=")
+			.append(tz)
+			.append(":")
+			.append(date)
+			.append("T")
 			.append(time)
+			.append("00")
 			.append("\r\n")
 		.toString();
+		} else { 
+			eventStartTime = new StringBuilder()
+			.append("DTEND:")
+			.append(date)
+			.append("T")
+			.append(time)
+			.append("00")
+			.append("\r\n")
+		.toString();
+		}		
 	}
 	
 	public void setUID(String uid){

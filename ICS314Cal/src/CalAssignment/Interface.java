@@ -83,8 +83,10 @@ public class Interface {
 	public static String[] getPrompts() {
 		return new String[] {
 			"Name the event",
-			"Set a start time",
-			"Set an end time",
+			"Set a start date (yyyymmdd)",
+			"Set a start time (hhmm)",
+			"Set an end date (yyyymmdd)",
+			"Set an end time (hhmm)",
 			"Enter your email address"
 		};		
 	}
@@ -104,8 +106,9 @@ public class Interface {
 		String[] descriptors = info.split(", ");
 		int i = 0;
 		event.setSummary(descriptors[i++]);
-		event.setStart(descriptors[i++]);
-		event.setEnd(descriptors[i++]);
+		//only works if timezone info is last in array.
+		event.setStart(descriptors[i++], descriptors[i++], descriptors[descriptors.length-1]);
+		event.setEnd(descriptors[i++], descriptors[i++], descriptors[descriptors.length-1]);
 		event.setUID(descriptors[i++]);
 		if(getGeoInfo()) {
 			event.setGeographicPosition(Float.parseFloat(descriptors[i++]), 
