@@ -55,7 +55,7 @@ public class Event {
 	
 	public void setEnd(String date, String time, String tz){
 		if(Interface.getTzInfo()) {
-			eventStartTime = new StringBuilder()
+			eventEndTime = new StringBuilder()
 			.append("DTEND;")
 			.append("TZID=")
 			.append(tz)
@@ -67,7 +67,7 @@ public class Event {
 			.append("\r\n")
 		.toString();
 		} else { 
-			eventStartTime = new StringBuilder()
+			eventEndTime = new StringBuilder()
 			.append("DTEND:")
 			.append(date)
 			.append("T")
