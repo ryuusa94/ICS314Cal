@@ -70,7 +70,7 @@ public class Interface {
 	 * @return an array of user input (answers)
 	 */
 	public static String[] getEventPrompts() {
-		String title = "Creating your event";
+		String title = "Creating Your Event";
 		int type = JOptionPane.QUESTION_MESSAGE;
 		return new String[] {
 			JOptionPane.showInputDialog(null, "Name the event", title, type),
@@ -88,9 +88,11 @@ public class Interface {
 	 * @return an array of user input (answers)
 	 */
 	public static String[] getOptionalGeoPrompts() {
+		String title = "Geographic Position";
+		int type = JOptionPane.QUESTION_MESSAGE;
 		return new String[] {
-			JOptionPane.showInputDialog(null, "Please enter the latitude in decimal degrees"),
-			JOptionPane.showInputDialog(null, "Please enter the longitude in decimal degrees")
+			JOptionPane.showInputDialog(null, "Please enter the latitude in decimal degrees", title, type),
+			JOptionPane.showInputDialog(null, "Please enter the longitude in decimal degrees", title, type)
 		};
 	}
 	
@@ -100,8 +102,10 @@ public class Interface {
 	 * @return an array of user input (answers)
 	 */
 	public static String[] getOptionalClassificationPrompts() {
+		String title = "Classification";
+		int type = JOptionPane.QUESTION_MESSAGE;
 		return new String[] {
-			JOptionPane.showInputDialog(null, "Please enter the classification")
+			JOptionPane.showInputDialog(null, "Please enter the classification", title, type)
 		};
 	}
 	
@@ -120,8 +124,10 @@ public class Interface {
 			"Alaska",
 			"Hawaii"	
 		};
+		String title = "Timezone";
+		int type = JOptionPane.QUESTION_MESSAGE;
 		return new String[] {
-			(String) JOptionPane.showInputDialog(null, "Please select a timezone", "Timezone", JOptionPane.QUESTION_MESSAGE, null, choices, choices[0])
+			(String) JOptionPane.showInputDialog(null, "Please select a timezone", title, type, null, choices, choices[0])
 		};
 	}
 	
