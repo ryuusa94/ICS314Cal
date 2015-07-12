@@ -1,6 +1,6 @@
 package CalAssignment;
 
-/*
+/**
  * GreatCircle
  * Calculates distance between two locations given their positions in decimal degrees.
  * 
@@ -9,23 +9,15 @@ package CalAssignment;
  * Referenced:
  * http://edndoc.esri.com/arcobjects/9.0/Samples/Geometry/Great_Circle_Distance.htm
  * http://introcs.cs.princeton.edu/java/12types/GreatCircle.java.html
+ * @author TeamElara
  */
 public class GreatCircle {
 
 	//Length of a degree in various units of distance.
-	private static double milesPerDegree = 69.05;
-	private static double kmPerDegree = 111.12;
+	private double milesPerDegree = 69.05;
+	private double kmPerDegree = 111.12;
 	
-	//testing only
-	public static void main(String[] args) {
-		
-		System.out.println("Straight line distance from campus to Kapiolani park (in miles): " + 
-				circleDistance(21.298307, -157.816023, 21.267356, -157.819414));
-		
-	}
-
-	
-	public static double circleDistance(double lat1, double lon1, 
+	public double circleDistance(double lat1, double lon1, 
 			double lat2, double lon2) {
 		
 		//Converting decimal degrees to radians for calculation.
@@ -41,9 +33,38 @@ public class GreatCircle {
 		//Converting back to decimal degrees.
 		distance = Math.toDegrees(distance);
 		
+		//rounded to two decimal places
+		return (Math.round(distance * 100.0) / 100.0 );
+	}
+	
+	/**
+	 * miles
+	 * Converts distance between two locations using latitude and longitude
+	 * @param lat1, location 1 latitude
+	 * @param lon1, location 1 longitude
+	 * @param lat2, location 2 latitude
+	 * @param lon2, location 2 longitude
+	 * @return, distance in miles
+	 */
+	public double miles(double lat1, double lon1,
+			double lat2, double lon2) {
 		
-        return ( distance * milesPerDegree ); //change to kmPerDegree for distance in km
+		return circleDistance(lat1, lon1, lat2, lon2) * milesPerDegree;
+	}
+	
+	/**
+	 * km
+	 * Converts distance between two locations using latitude and longitude
+	 * @param lat1, location 1 latitude
+	 * @param lon1, location 1 longitude
+	 * @param lat2, location 2 latitude
+	 * @param lon2, location 2 longitude
+	 * @return, distance in kilometers
+	 */
+	public double km(double lat1, double lon1,
+			double lat2, double lon2) {
 		
+		return circleDistance(lat1, lon1, lat2, lon2) * kmPerDegree;
 	}
 
 }
