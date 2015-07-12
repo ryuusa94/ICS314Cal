@@ -18,7 +18,8 @@ public class Event {
 		// (i.e., private variables eventStartTime and eventEndTime being String ArrayList or something so we can push inbetween their contents)
 		// essentially, TZID for timezone is an extra parameter of DTSTART start time, not its own specification
 		eventGeoPos, 
-		eventClass;
+		eventClass,
+		eventComment;
 	
 	public void setSummary(String summary){
 		eventSummary = new StringBuilder()
@@ -28,6 +29,14 @@ public class Event {
 		.toString();
 	}
 	
+	/**
+	 * setStart, sets start time, including time zone if provided.
+	 * Uses tzInfo boolean from Interface to determine whether user
+	 * has provided time zone information, and thus which items to append.
+	 * @param date, user set date
+	 * @param time, user set time
+	 * @param tz, user set time zone
+	 */
 	public void setStart(String date, String time, String tz){
 		if(Interface.getTzInfo()) {
 			eventStartTime = new StringBuilder()
@@ -53,6 +62,14 @@ public class Event {
 		}		
 	}
 	
+	/**
+	 * setEnd, sets end time, including time zone if provided.
+	 * Uses tzInfo boolean from Interface to determine whether user
+	 * has provided time zone information, and thus which items to append.
+	 * @param date, user set date
+	 * @param time, user set time
+	 * @param tz, user set time zone
+	 */
 	public void setEnd(String date, String time, String tz){
 		if(Interface.getTzInfo()) {
 			eventEndTime = new StringBuilder()
@@ -114,6 +131,10 @@ public class Event {
 		.toString();
 	}
 	
+	public void setComment() {
+		//don't know how this should work yet
+	}
+	
 	/* getters for all private variables */
 	public String getEventSummary() { return eventSummary; }
 	public String getEventStartTime() { return eventStartTime; }
@@ -122,4 +143,5 @@ public class Event {
 	public String getEventTimezone() { return eventTimezone; }
 	public String getEventGeoPos() { return eventGeoPos; }
 	public String getEventClass() { return eventClass; }
+	public String getEventComment() { return eventComment; }
 }
