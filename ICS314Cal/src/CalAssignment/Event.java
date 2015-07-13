@@ -62,6 +62,23 @@ public class Event {
 		}		
 	}
 	
+	public void setStart( String date ){
+		if(date.contains("TZID")) {
+			eventStartTime = new StringBuilder()
+					.append("DTSTART;")
+					.append(date)
+					.append("\r\n")
+			.toString();
+		} else {
+			eventStartTime = new StringBuilder()
+					.append("DTSTART:")
+					.append(date)
+					.append("\r\n")
+			.toString();
+
+		}
+	}
+	
 	/**
 	 * setEnd, sets end time, including time zone if provided.
 	 * Uses tzInfo boolean from Interface to determine whether user
@@ -95,6 +112,22 @@ public class Event {
 		}		
 	}
 	
+	public void setEnd( String date ){
+		if(date.contains("TZID")) {
+		eventEndTime = new StringBuilder()
+				.append("DTEND;")
+				.append(date)
+				.append("\r\n")
+			.toString();
+		} else {
+			eventEndTime = new StringBuilder()
+					.append("DTEND:")
+					.append(date)
+					.append("\r\n")
+				.toString();
+		}
+	}
+	
 	public void setUID(String uid){
 		eventUid = new StringBuilder()
 			.append("UID:")
@@ -122,6 +155,14 @@ public class Event {
 			.append("\r\n")
 		.toString();
 	}
+	
+	public void setGeographicPosition(String geo){
+		eventGeoPos = new StringBuilder()
+				.append("GEO:")
+				.append(geo)
+				.append("\r\n")
+			.toString();
+	}
 
 	public void setClassification(String cla ){
 		eventClass = new StringBuilder()
@@ -133,6 +174,13 @@ public class Event {
 	
 	public void setComment() {
 		//don't know how this should work yet
+		/*eventComment = new StringBuilder()
+		 * .append("COMMENT:")
+		 * .append("Distance to your next event is: ")
+		 * .append( ~need to call GreatCircle.miles and GreatCircle.km with 
+		 * the geo positions from this and the next event~ )
+		 * .toString();
+		 */
 	}
 	
 	/* getters for all private variables */
