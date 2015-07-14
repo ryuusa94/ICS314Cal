@@ -21,7 +21,7 @@ public class CalObj {
 	
 	//Adds event to CalObj event array list
 	public void addEvent(Event e){
-		eventArray.add(e);
+		getEventArray().add(e);
 	}
 	
 	//Writes CalObj to .ics file
@@ -46,8 +46,8 @@ public class CalObj {
 			bw.write(version);
 			bw.write(prodid);
 			
-			for (int i = 0; i < eventArray.size(); i++) {
-				Event e = eventArray.get(i);
+			for (int i = 0; i < getEventArray().size(); i++) {
+				Event e = getEventArray().get(i);
 				bw.write(eventBegin);
 				bw.write( e.getEventUid() );
 				bw.write( e.getEventStartTime() );
@@ -141,6 +141,15 @@ public class CalObj {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}		
+	}
+	
+	//Created getters and setters for eventArray for testing. Can remove if not necessary later.
+	public ArrayList<Event> getEventArray() {
+		return eventArray;
+	}
+
+	public void setEventArray(ArrayList<Event> eventArray) {
+		this.eventArray = eventArray;
+	}
 	
 } 
