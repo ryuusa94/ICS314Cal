@@ -6,7 +6,7 @@ package CalAssignment;
  * @author TeamElara
  *
  */
-public class Event {
+public class Event implements Comparable<Event> {
 	private String eventSummary, 
 		eventStartTime, 
 		eventEndTime,
@@ -192,4 +192,14 @@ public class Event {
 	public String getEventGeoPos() { return eventGeoPos; }
 	public String getEventClass() { return eventClass; }
 	public String getEventComment() { return eventComment; }
+
+	@Override
+	public int compareTo(Event e) {
+		String[] date1 = getEventStartTime().split("[:]");
+		String[] date2 = e.getEventStartTime().split("[:]");
+		
+		//int comp = date1[1].compareTo(date2[1]);
+		return date1[1].compareTo(date2[1]);
+	}
+
 }
