@@ -172,15 +172,16 @@ public class Event implements Comparable<Event> {
 		.toString();
 	}
 	
-	public void setComment() {
-		//don't know how this should work yet
-		/*eventComment = new StringBuilder()
-		 * .append("COMMENT:")
-		 * .append("Distance to your next event is: ")
-		 * .append( ~need to call GreatCircle.miles and GreatCircle.km with 
-		 * the geo positions from this and the next event~ )
-		 * .toString();
-		 */
+	public void setComment(double miles, double km) {
+		eventComment = new StringBuilder()
+		  	.append("COMMENT:")
+		  	.append("Distance to your next event is: ")
+		  	.append(miles)
+		  	.append(" miles, ")
+		  	.append(km)
+		  	.append(" km")
+		  	.append("\r\n")
+		  .toString();		 
 	}
 	
 	/* getters for all private variables */

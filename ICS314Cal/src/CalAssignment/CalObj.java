@@ -147,8 +147,11 @@ public class CalObj {
 		 *Called after every event is read, so not efficient in this location.
 		 *Need to move to some location where it can be called only once, after all files
 		 *have been read.
-		 */
-		Collections.sort(eventArray);
+		 */				
+		if (eventArray.size() > 1) {
+			Collections.sort(eventArray);
+		} 
+		
 	}
 	
 	//Created getters and setters for eventArray for testing. Can remove if not necessary later.
