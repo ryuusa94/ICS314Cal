@@ -7,7 +7,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class CalObj {
 	
@@ -141,17 +140,7 @@ public class CalObj {
 			
 		} catch (IOException e) {
 			e.printStackTrace();
-		}
-		
-		/*Sorts current event array based on date & time.
-		 *Called after every event is read, so not efficient in this location.
-		 *Need to move to some location where it can be called only once, after all files
-		 *have been read.
-		 */				
-		if (eventArray.size() > 1) {
-			Collections.sort(eventArray);
-		} 
-		
+		}		
 	}
 	
 	//Created getters and setters for eventArray for testing. Can remove if not necessary later.

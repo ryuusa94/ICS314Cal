@@ -1,4 +1,8 @@
 package CalAssignment;
+import java.io.File;
+import java.util.Collections;
+
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 /**
@@ -24,6 +28,29 @@ public class Interface {
 		CalObj calendar = new CalObj();
 		Event event = new Event();
 		StringBuilder builder = new StringBuilder();
+		
+		//prompts user to to select file for reading
+		while (JOptionPane.showConfirmDialog(null, "Would you like to read an existing event file?", "file", JOptionPane.YES_NO_CANCEL_OPTION) == JOptionPane.YES_OPTION) {
+			JFileChooser reader = new JFileChooser();
+			/* "/Users" works on mac, but will need to be switched to possibly "C:/" on windows */
+			File f = new File("/Users");
+			File path;
+			String filename;
+			reader.setCurrentDirectory(f);
+			reader.setDialogTitle("Choose a file");
+			if(reader.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+				path = reader.getSelectedFile();
+				filename = path.getName();
+				calendar.read(filename);
+			} 		
+		}
+		
+		//sorts and adds distance comment if more than one file has been read
+		if(calendar.getEventArray().size() > 1) {
+			Collections.sort(calendar.getEventArray());
+			AddComment ac = new AddComment();
+			ac.addComment(calendar);
+		}
 		
 		// ask information to setup base event
 		String[] prompts = getEventPrompts();

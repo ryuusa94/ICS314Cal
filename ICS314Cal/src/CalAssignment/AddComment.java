@@ -44,13 +44,12 @@ public class AddComment {
 					double lat2 = Double.parseDouble(geo2[1]);
 					double long2 = Double.parseDouble(geo1[2]);
 					
-					//testing only
-					System.out.println("Miles " + gc.miles(lat1, long1, lat2, long2));
-					System.out.println("KMs " + gc.km(lat1, long1, lat2, long2));
-					
 					//sets previous event's comment section with distance to current event
 					previous.setComment(gc.miles(lat1, long1, lat2, long2), 
 							gc.km(lat1, long1, lat2, long2));
+					
+					//testing only
+					System.out.println("Added to " + previous.getEventSummary() + previous.getEventComment());
 				}
 			}
 
