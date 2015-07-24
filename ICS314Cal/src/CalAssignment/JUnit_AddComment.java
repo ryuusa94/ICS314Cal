@@ -21,9 +21,9 @@ public class JUnit_AddComment {
 	public void testAddComment() {
 		
 		CalObj testCal = new CalObj();
-		testCal.read("calendarBW.ics");
-		testCal.read("calendarSF.ics");
-		testCal.read("calendarCR.ics");
+		testCal.read("calBW1400geo.ics");
+		testCal.read("calCR1430geo.ics");
+		testCal.read("calSF2100geo.ics");
 		
 		Event event1 = testCal.getEventArray().get(0);		
 		Event event2 = testCal.getEventArray().get(1);
@@ -32,8 +32,8 @@ public class JUnit_AddComment {
 		AddComment ac = new AddComment();
 		ac.addComment(testCal);
 		
-		assertEquals("COMMENT:Distance to your next event is: 7.67 miles, 12.35 km\r\n", event1.getEventComment());
-		assertEquals("COMMENT:Distance to your next event is: 53.7 miles, 86.42 km\r\n", event2.getEventComment());
+		assertEquals("COMMENT:Distance to your next event is: 1.38 miles, 2.22 km\r\n", event1.getEventComment());
+		assertEquals("COMMENT:Distance to your next event is: 2.07 miles, 3.33 km\r\n", event2.getEventComment());
 		assertEquals(null, event3.getEventComment());	
 	}	
 }
