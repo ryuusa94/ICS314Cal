@@ -32,7 +32,6 @@ public class Interface {
 		//prompts user to to select file for reading
 		while (JOptionPane.showConfirmDialog(null, "Would you like to read an existing event file?", "file", JOptionPane.YES_NO_CANCEL_OPTION) == JOptionPane.YES_OPTION) {
 			JFileChooser reader = new JFileChooser();
-			/* "/Users" works on mac, but will need to be switched to possibly "C:/" on windows */
 			File f = new File("/Users");
 			File path;
 			String filename;
@@ -45,9 +44,8 @@ public class Interface {
 			} 		
 		}
 		
-		//sorts and adds distance comment if more than one file has been read
+		// sorts events and adds comment section if more than one event read
 		if(calendar.getEventArray().size() > 1) {
-			Collections.sort(calendar.getEventArray());
 			AddComment ac = new AddComment();
 			ac.addComment(calendar);
 		}

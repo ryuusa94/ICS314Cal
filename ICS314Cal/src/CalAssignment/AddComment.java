@@ -13,10 +13,6 @@ public class AddComment {
 	/**
 	 * addComment, iterates through arraylist of events, calling GreatCircle
 	 * when geographic positions are available.
-	 */
-	/**
-	 * addComment, iterates through arraylist of events, calling GreatCircle
-	 * when geographic positions are available.
 	 * @param cal, calendar object generated at time of reading
 	 */
 	public void addComment(CalObj cal) {
@@ -35,8 +31,7 @@ public class AddComment {
 			if (eCount > 0) {
 				Event previous = cal.getEventArray().get(eCount - 1);
 				Event current = cal.getEventArray().get(eCount);
-				
-				
+								
 				if(previous.getEventGeoPos() != null && current.getEventGeoPos() != null) {
 					String[] geo1 = previous.getEventGeoPos().split("[:;]");
 					String[] geo2 = current.getEventGeoPos().split("[:;]");
@@ -51,7 +46,8 @@ public class AddComment {
 							gc.km(lat1, long1, lat2, long2));
 					
 					//testing only
-					System.out.println("Added to " + previous.getEventSummary() + previous.getEventComment());
+					System.out.println("Added to " + previous.getEventSummary() + previous.getEventStartTime() 
+						+ previous.getEventComment());
 				}
 			}
 

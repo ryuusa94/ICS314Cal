@@ -15,9 +15,9 @@ public class JUnit_CalObj {
 	public void testRead() {
 		
 		CalObj testCal = new CalObj();
-		testCal.read("calendarBW.ics");
-		testCal.read("calendarSF.ics");
-		testCal.read("calendarCR.ics");
+		testCal.read("calBW1400geo.ics");
+		testCal.read("calSF2100geo.ics");
+		testCal.read("calCR1430geo.ics");
 		
 		Event event1 = testCal.getEventArray().get(0);		
 		Event event2 = testCal.getEventArray().get(1);
