@@ -32,7 +32,7 @@ public class Interface {
 		//prompts user to to select file for reading
 		while (JOptionPane.showConfirmDialog(null, "Would you like to read an existing event file?", "file", JOptionPane.YES_NO_CANCEL_OPTION) == JOptionPane.YES_OPTION) {
 			JFileChooser reader = new JFileChooser();
-			File f = new File("/Users/Chad/git/ICS314Cal");
+			File f = new File("/Users");
 			File path;
 			String filename;
 			reader.setCurrentDirectory(f);
