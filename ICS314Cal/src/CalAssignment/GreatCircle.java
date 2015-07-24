@@ -33,8 +33,7 @@ public class GreatCircle {
 		//Converting back to decimal degrees.
 		distance = Math.toDegrees(distance);
 		
-		//rounded to two decimal places
-		return (Math.round(distance * 100.0) / 100.0 );
+		return distance;
 	}
 	
 	/**
@@ -44,12 +43,12 @@ public class GreatCircle {
 	 * @param lon1, location 1 longitude
 	 * @param lat2, location 2 latitude
 	 * @param lon2, location 2 longitude
-	 * @return, distance in miles
+	 * @return, distance in miles (rounded to two decimal places)
 	 */
 	public double miles(double lat1, double lon1,
 			double lat2, double lon2) {
 		
-		return circleDistance(lat1, lon1, lat2, lon2) * milesPerDegree;
+		return (Math.round((circleDistance(lat1, lon1, lat2, lon2) * milesPerDegree) * 100.0) / 100.0);
 	}
 	
 	/**
@@ -59,12 +58,12 @@ public class GreatCircle {
 	 * @param lon1, location 1 longitude
 	 * @param lat2, location 2 latitude
 	 * @param lon2, location 2 longitude
-	 * @return, distance in kilometers
+	 * @return, distance in kilometers (rounded to two decimal places)
 	 */
 	public double km(double lat1, double lon1,
 			double lat2, double lon2) {
 		
-		return circleDistance(lat1, lon1, lat2, lon2) * kmPerDegree;
+		return (Math.round((circleDistance(lat1, lon1, lat2, lon2) * kmPerDegree) * 100.0) / 100.0);
 	}
 
 }

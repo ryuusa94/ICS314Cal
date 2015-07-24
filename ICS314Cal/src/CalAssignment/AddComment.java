@@ -1,5 +1,6 @@
 package CalAssignment;
 
+import java.util.Collections;
 import java.util.Iterator;
 
 /**
@@ -21,6 +22,7 @@ public class AddComment {
 	public void addComment(CalObj cal) {
 		
 		GreatCircle gc = new GreatCircle();
+		Collections.sort(cal.getEventArray());
 	
 		Iterator<Event> itr = cal.getEventArray().iterator();
 		
